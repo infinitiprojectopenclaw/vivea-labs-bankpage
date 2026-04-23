@@ -973,24 +973,32 @@ footer .pay-logo{background:#1a1a1a;color:#ddd;border-color:#333}
 (function(){
 'use strict';
 
+// Preserve GitHub Pages subdirectory base path even after pushState to '/'
+var BASE_PATH = (function(){
+  var p = window.location.pathname;
+  p = p.replace(/\/[^\/]*$/, '/');
+  return p;
+})();
+
+
 var PRODUCTS = [
  {id:'p1',name:'Daily Magnesium Drink Stick',cat:'Supplement · 30 sticks',sub:'Daily wellness ritual.',price:7.99,
-  img:'imgs/p1.png',
+  img:BASE_PATH+'imgs/p1.png',
   desc:'Single-serve drink sticks formulated with magnesium glycinate and natural citrus for a simple daily wellness ritual.',key:'DM',
   details:'<strong>Net Weight:</strong> 30 sticks x 5g / 150g total<br><br><strong>Ingredients:</strong> Magnesium Glycinate, Citric Acid, Natural Lemon Flavor, Monk Fruit Extract, Stevia Leaf Extract.<br><br><strong>Directions:</strong> Pour one stick into 250ml of water, stir and drink. One serving per day with food, preferably in the evening.<br><br><strong>Features:</strong> Vegan, gluten-free, non-GMO, no artificial colors, no added sugar.<br><br><strong>Storage:</strong> Store in a cool, dry place. Keep away from direct sunlight.<br><br><em style="color:#a33">IMPORTANT: This product has not been evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease. Consult your physician before use.</em>',
 },
  {id:'p2',name:'Sleep+ Melatonin Softgels',cat:'Supplement · 60 softgels',sub:'Evening routine support.',price:19.99,
-  img:'imgs/p2.png',
+  img:BASE_PATH+'imgs/p2.png',
   desc:'A considered evening formula with melatonin, magnesium and passionflower, delivered in compact softgels.',key:'SP',
   details:'<strong>Net Weight:</strong> 60 softgels<br><br><strong>Ingredients:</strong> Melatonin 1mg, Magnesium Glycinate 100mg, Passiflora Incarnata Extract 200mg, Chamomile Extract 50mg, Vegetable Softgel (Modified Starch, Glycerin, Water).<br><br><strong>Directions:</strong> Take 1 softgel 30 minutes before bedtime with a glass of water. Do not exceed recommended daily intake.<br><br><strong>Features:</strong> Vegan softgel, gluten-free, non-GMO, third-party tested.<br><br><strong>Storage:</strong> Store at room temperature. Keep out of reach of children.<br><br><em style="color:#a33">IMPORTANT: This product has not been evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease. Consult your physician before use.</em>',
 },
  {id:'p3',name:'Immunity Triple-C Complex',cat:'Supplement · 90 capsules',sub:'Three-part daily support.',price:49.99,
-  img:'imgs/p3.png',
+  img:BASE_PATH+'imgs/p3.png',
   desc:'A three-part daily complex combining Vitamin C, zinc and elderberry extract in vegetable capsules.',key:'IC',
   details:'<strong>Net Weight:</strong> 90 capsules<br><br><strong>Ingredients:</strong> Vitamin C (Ascorbic Acid) 500mg, Zinc Picolinate 15mg, Elderberry (Sambucus Nigra) Extract 400mg, Acerola Fruit Powder 100mg, Vegetable Capsule (Hypromellose).<br><br><strong>Directions:</strong> Take 1 capsule daily with a meal and a full glass of water. Best taken in the morning.<br><br><strong>Features:</strong> Vegan, gluten-free, dairy-free, non-GMO, no synthetic fillers.<br><br><strong>Storage:</strong> Store in a cool, dry place, tightly closed.<br><br><em style="color:#a33">IMPORTANT: This product has not been evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease. Consult your physician before use.</em>',
 },
  {id:'p4',name:'Collagen Peptides Powder',cat:'Supplement · 300g',sub:'Unflavored, daily scoop.',price:59.99,
-  img:'imgs/p4.png',
+  img:BASE_PATH+'imgs/p4.png',
   desc:'Grass-fed hydrolyzed bovine collagen peptides with added hyaluronic acid and vitamin C for a clean daily scoop.',key:'CP',
   details:'<strong>Net Weight:</strong> 300g / 30 servings<br><br><strong>Ingredients:</strong> Hydrolyzed Bovine Collagen Peptides (Types I & III) 10g, Hyaluronic Acid 50mg, Vitamin C (Ascorbic Acid) 80mg.<br><br><strong>Directions:</strong> Mix 1 scoop (10g) into 250ml of water, coffee, smoothie or any beverage. Once daily with a meal.<br><br><strong>Features:</strong> Grass-fed and pasture-raised, gluten-free, dairy-free, unflavored, third-party tested.<br><br><strong>Storage:</strong> Keep the scoop inside the jar. Close tightly after use.<br><br><em style="color:#a33">IMPORTANT: This product has not been evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease. Consult your physician before use.</em>',
 }
